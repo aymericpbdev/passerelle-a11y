@@ -7,7 +7,7 @@ Plateforme d'audit d'accessibilité web open-source, pédagogique et collaborati
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
-[![Status](https://img.shields.io/badge/Status-En%20développement-yellow)]()
+[![Status](https://img.shields.io/badge/Status-En%20développement-yellow)](https://github.com/aymericpbdev/passerelle-a11y)
 
 ---
 
