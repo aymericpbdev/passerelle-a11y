@@ -5,7 +5,6 @@
 Plateforme d'audit d'accessibilité web open-source, pédagogique et collaborative.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Vue 3](https://img.shields.io/badge/Vue-3-42b883)](https://vuejs.org/)
 [![AdonisJS](https://img.shields.io/badge/AdonisJS-6-5a45ff)](https://adonisjs.com/)
 [![Status](https://img.shields.io/badge/Status-En%20développement-yellow)]()
@@ -39,14 +38,10 @@ Issue de 6 années d'expérience dans le médico-social et d'une reconversion da
 
 ## 🛠️ Stack Technique
 
-- **Frontend & Backend** : [Next.js 14](https://nextjs.org/) (App Router) + TypeScript
-- **Styling** : [TailwindCSS](https://tailwindcss.com/)
-- **Base de données** : PostgreSQL + [Prisma ORM](https://www.prisma.io/)
-- **Authentification** : [NextAuth.js](https://next-auth.js.org/)
-- **Tests accessibilité** : [Axe-core](https://github.com/dequelabs/axe-core)
-- **Job Queue** : [Trigger.dev](https://trigger.dev/)
-- **Génération PDF** : [PDFKit](https://pdfkit.org/)
-- **Hébergement** : [Vercel](https://vercel.com/) + [Vercel Postgres](https://vercel.com/storage/postgres)
+- **Frontend** : Vue 3 + TypeScript + TailwindCSS
+- **Backend** : AdonisJS 6 + PostgreSQL
+- **Tests accessibilité** : Axe-core
+- **Développement** : Vite + Git/GitHub
 
 ## 🚀 Roadmap
 
@@ -138,3 +133,4 @@ Toute contribution sera sous licence AGPL-3.0.
 
 
 **Construit avec ❤️ pour un web accessible à tous**
+
