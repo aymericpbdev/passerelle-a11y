@@ -6,8 +6,9 @@ Plateforme d'audit d'accessibilité web open-source, pédagogique et collaborati
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
-[![Status](https://img.shields.io/badge/Status-En%20développement-yellow)](https://github.com/aymericpbdev/passerelle-a11y)
+[![Vue 3](https://img.shields.io/badge/Vue-3-42b883)](https://vuejs.org/)
+[![AdonisJS](https://img.shields.io/badge/AdonisJS-6-5a45ff)](https://adonisjs.com/)
+[![Status](https://img.shields.io/badge/Status-En%20développement-yellow)]()
 
 ---
 
@@ -134,5 +135,6 @@ Toute contribution sera sous licence AGPL-3.0.
 - Mes formateurs et pairs en reconversion
 
 ---
+
 
 **Construit avec ❤️ pour un web accessible à tous**
