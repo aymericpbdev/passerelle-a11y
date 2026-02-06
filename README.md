@@ -38,10 +38,20 @@ Issue de 6 années d'expérience dans le médico-social et d'une reconversion da
 
 ## 🛠️ Stack Technique
 
-- **Frontend** : Vue 3 + TypeScript + TailwindCSS
-- **Backend** : AdonisJS 6 + PostgreSQL
-- **Tests accessibilité** : Axe-core
-- **Développement** : Vite + Git/GitHub
+### Frontend
+- **Vue 3** : Framework JavaScript pour l'interface utilisateur
+- **TypeScript** : JavaScript avec typage pour moins d'erreurs
+- **TailwindCSS** : Styles et design responsive
+
+### Backend
+- **AdonisJS 6** : Framework Node.js pour l'API
+- **PostgreSQL** : Base de données (production)
+- **SQLite** : Base de données (développement local)
+- **Axe-core** : Moteur d'analyse d'accessibilité
+
+### Outils
+- **Vite** : Outil de développement rapide
+- **Git & GitHub** : Versionning et collaboration
 
 ## 🚀 Roadmap
 
@@ -133,4 +143,5 @@ Toute contribution sera sous licence AGPL-3.0.
 
 
 **Construit avec ❤️ pour un web accessible à tous**
+
 
