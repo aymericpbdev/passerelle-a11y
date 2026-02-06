@@ -27,12 +27,13 @@ Passerelle A11y est née d'un constat simple : l'accessibilité web est souvent 
 
 Issue de 6 années d'expérience dans le médico-social et d'une reconversion dans le développement web, Passerelle A11y construit un pont entre les besoins réels des utilisateurs et les pratiques des développeurs.
 
+**Approche pédagogique :** Explications claires, pas de jargon technique inutile. L'outil guide l'utilisateur vers des améliorations concrètes plutôt que de le submerger de normes.
+
 ## ✨ Fonctionnalités (MVP)
 
 - 🔍 **Analyse automatisée** : Tests d'accessibilité basés sur WCAG 2.1 (niveaux A et AA)
 - 📊 **Score et rapport détaillé** : Évaluation claire avec recommandations concrètes
-- 📚 **Approche pédagogique** : Explications claires, pas de jargon technique
-- 📈 **Suivi dans le temps** : Historique des analyses pour mesurer la progression
+- 📊 **Rapport d'analyse** : Score d'accessibilité et détection des problèmes
 - 💾 **Export PDF** : Rapports téléchargeables pour documentation
 - 🔐 **Gestion de projets** : Suivi de plusieurs sites simultanément
 
@@ -55,7 +56,7 @@ Issue de 6 années d'expérience dans le médico-social et d'une reconversion da
 
 ## 🚀 Roadmap
 
-### Phase 1 - MVP (Janvier - Mai 2025)
+### Phase 1 - MVP (Février - Mai 2025)
 - [x] Définition architecture
 - [x] Choix stack technique
 - [ ] Setup projet et base de données
@@ -67,8 +68,11 @@ Issue de 6 années d'expérience dans le médico-social et d'une reconversion da
 - [ ] Génération PDF
 - [ ] Déploiement MVP
 
+> 💡 **Suivi détaillé :** Les tickets techniques sont gérés sur [GitHub Projects](https://github.com/aymericpbdev/passerelle-a11y/projects)
+
 ### Phase 2 - Post-MVP (Après diplôme)
-- [ ] Comparaisons temporelles
+- [ ] Historique et suivi temporel des analyses
+- [ ] Comparaisons avant/après
 - [ ] Tests manuels guidés
 - [ ] Suggestions de correction automatiques
 - [ ] API publique
@@ -143,5 +147,6 @@ Toute contribution sera sous licence AGPL-3.0.
 
 
 **Construit avec ❤️ pour un web accessible à tous**
+
 
 
