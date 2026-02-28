@@ -9,6 +9,11 @@ node_modules/
 */.env
 */.env.*
 
+# Exceptions for environment variables  
+
+!.env.example
+!*/.env.example
+
 # Build outputs
 dist/
 build/
