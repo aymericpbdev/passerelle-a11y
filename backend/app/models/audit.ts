@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import Project from '#models/project'
+import Issue from '#models/issue'
 
 export default class Audit extends BaseModel {
   @column({ isPrimary: true })
@@ -27,4 +28,7 @@ export default class Audit extends BaseModel {
 
   @belongsTo(() => Project)
   declare project: BelongsTo<typeof Project>
+
+  @hasMany(() => Issue)
+  declare issues: HasMany<typeof Issue>
 }
