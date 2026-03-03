@@ -16,7 +16,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
 
       table.string('name').notNullable()
-      table.string('url, 2048').notNullable()
+      table.string('url', 2048).notNullable()
       table.boolean('is_public').defaultTo(false).notNullable()
 
       table.timestamp('created_at')
