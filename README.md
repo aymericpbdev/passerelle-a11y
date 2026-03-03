@@ -114,7 +114,7 @@ Le code source est disponible sous [GNU Affero General Public License v3.0](http
 
 **À condition de :**
 - ⚠️ Publier vos modifications sous la même licence (AGPL-3.0)
-- ⚠️ Fournir le code source si vous hébergez le service en ligne
+- ⚠️ Fournir le code source même si vous hébergez le service en ligne
 - ⚠️ Créditer l'auteur original
 
 ### Licence Commerciale
@@ -156,6 +156,7 @@ Toute contribution sera sous licence AGPL-3.0.
 
 
 **Construit pour un web accessible à tous**
+
 
 
 
