@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('@/assets/fonts/AtkinsonHyperlegibleNext-Regular.woff2') format('woff2'),
+       url('@/assets/fonts/AtkinsonHyperlegibleNext-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('@/assets/fonts/AtkinsonHyperlegibleNext-Medium.woff2') format('woff2'),
+       url('@/assets/fonts/AtkinsonHyperlegibleNext-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('@/assets/fonts/AtkinsonHyperlegibleNext-SemiBold.woff2') format('woff2'),
+       url('@/assets/fonts/AtkinsonHyperlegibleNext-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('@/assets/fonts/AtkinsonHyperlegibleNext-Bold.woff2') format('woff2'),
+       url('@/assets/fonts/AtkinsonHyperlegibleNext-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Typographie */
+  /* Atkinson Hyperlegible Next : conçue pour les personnes malvoyantes */
+  --font-sans: 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui;
+
+  /* Couleur principale : Teal */
+  /* Choix justifié : distinctif, lisible, AAA vérifié (7.58:1 sur fond blanc) */
+  --color-primary-50:  #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-600: #115e59;   /* Couleur principale : boutons, liens actifs */
+  --color-primary-700: #0d4f4a;   /* Survol */
+  --color-primary-900: #082f2c;
+
+  /* Couleurs de statut : AA vérifié sur fond blanc */
+  /* Choix AA conscient : les teintes AAA perdent la clarté sémantique vert/orange/rouge */
+  --color-success-100: #dcfce7;
+  --color-success-600: #15803d;   /* 5.01:1 : audits sans violation */
+
+  --color-warning-100: #fef9c3;
+  --color-warning-600: #b45309;   /* 5.02:1 : violations sérieuses */
+
+  --color-danger-100:  #fee2e2;
+  --color-danger-600:  #dc2626;   /* 4.82:1 : violations critiques */
+}
