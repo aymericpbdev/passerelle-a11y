@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +10,13 @@ const router = createRouter({
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: HomeView,
+    component: () =>
+      import('@/views/DashBoardView.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/dashboard',
   },
 ],
 })
