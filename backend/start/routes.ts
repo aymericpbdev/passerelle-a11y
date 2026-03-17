@@ -5,6 +5,10 @@ import { middleware } from '#start/kernel'
 
 const AuthController = () => import('#controllers/auth_controller')
 
+router.get('/api/test', ({ response }) => {
+  return response.ok({ message: 'routing ok' })
+})
+
 router
   .group(() => {
     // Routes publiques
@@ -24,4 +28,3 @@ router
       .prefix('/auth')
   })
   .prefix('/api')
-  .use(() => import('#middleware/force_json_response_middleware'))

@@ -19,7 +19,10 @@
 /**
  * Register hook to process TypeScript files using ts-node
  */
-import 'ts-node-maintained/register/esm'
+import '@poppinss/ts-exec' 
+/* Remplacement de 'ts-node-maintained @swc/core' 
+poppinss est un compilateur JIT (Just In Time) utilisé uniquement en développement
+API Node.js plus moderne et compatible avec Adonisjs 7 et Node 24.x */
 
 /**
  * Import ace console entrypoint

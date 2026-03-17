@@ -14,7 +14,7 @@ export default class AuthController {
       return response.conflict({ message: 'Cet email est déjà utilisé.' })
     }
 
-    const user = await userInfo.create({
+    const user = await User.create({
       fullName: payload.fullName,
       email: payload.email,
       password: payload.password,
@@ -31,7 +31,7 @@ export default class AuthController {
   async login({ request, response, auth }: HttpContext) {
     const { email, password } = await request.validateUsing(loginValidator)
 
-    const user = await userInfo.verifyCredentials(email, password)
+    const user = await User.verifyCredentials(email, password)
     const token = await auth.use('api').createToken(user)
 
     return response.ok({
