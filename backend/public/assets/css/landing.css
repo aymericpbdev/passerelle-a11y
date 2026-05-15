@@ -1,0 +1,157 @@
+/* backend/public/assets/css/landing.css */
+/* Styles spécifiques à la landing page (index.html) */
+/* Charge en complément de public.css */
+
+/* ============================================
+   En-tête de la landing : logo à gauche, nav à droite
+   ============================================ */
+
+.landing-header {
+  justify-content: space-between;
+}
+
+.landing-header nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: var(--color-gray-700);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.nav-link:hover {
+  background: var(--color-gray-100);
+  color: var(--color-primary-600);
+}
+
+.nav-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17, 94, 89, 0.4);
+}
+
+.nav-link--primary {
+  background: var(--color-primary-600);
+  color: white;
+}
+
+.nav-link--primary:hover {
+  background: var(--color-primary-700);
+  color: white;
+}
+
+/* ============================================
+   Section d'introduction (hero)
+   ============================================ */
+
+.landing-intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.landing-intro h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.landing-intro p {
+  font-size: 1.125rem;
+  color: var(--color-gray-700);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.btn-primary-large {
+  display: inline-block;
+  padding: 0.875rem 1.75rem;
+  background: var(--color-primary-600);
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  transition: background-color 0.15s;
+}
+
+.btn-primary-large:hover {
+  background: var(--color-primary-700);
+}
+
+.btn-primary-large:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17, 94, 89, 0.4);
+}
+
+/* ============================================
+   Section "Pourquoi"
+   ============================================ */
+
+.landing-features {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.landing-features h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.features-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .features-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.features-list article {
+  background: white;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.features-list h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary-600);
+  margin-bottom: 0.5rem;
+}
+
+.features-list p {
+  color: var(--color-gray-700);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+footer {
+  border-top: 1px solid var(--color-gray-200);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-gray-500);
+}
