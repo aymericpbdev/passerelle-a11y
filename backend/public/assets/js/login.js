@@ -25,9 +25,9 @@ if (urlParams.get('registered') === '1') {
 }
 
 /*
- Réinitialise tous les états d'erreur du formulaire.
+Réinitialise tous les messages du formulaire : erreurs de champ, erreur globale, et message de succès post-inscription s'il est présent.
 */
-function clearErrors() {
+function clearFormMessages() {
   formError.hidden = true
   formError.textContent = ''
 
@@ -38,6 +38,11 @@ function clearErrors() {
   passwordError.hidden = true
   passwordError.textContent = ''
   passwordInput.removeAttribute('aria-invalid')
+
+  const successMessage = document.querySelector('.form-success')
+  if (successMessage) {
+    successMessage.remove()
+  }
 }
 
 /*
@@ -93,7 +98,7 @@ function validateForm() {
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
-  clearErrors()
+  clearFormMessages()
 
   if (!validateForm()) {
     const firstError = form.querySelector('[aria-invalid="true"]')
