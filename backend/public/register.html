@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Créez votre compte Passerelle A11y et commencez à auditer l'accessibilité de vos sites web.">
+  <title>Créer un compte - Passerelle A11y</title>
+  <link rel="stylesheet" href="/assets/css/public.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <a href="/" class="site-logo">Passerelle A11y</a>
+  </header>
+
+  <main id="main-content" class="form-page">
+    <div class="form-card">
+
+      <h1>Créer un compte</h1>
+
+      <p
+        id="form-error"
+        class="form-error"
+        role="alert"
+        hidden
+      ></p>
+
+      <form id="register-form" novalidate>
+
+        <div class="form-group">
+          <label for="fullName">Nom complet</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            autocomplete="name"
+            required
+            aria-required="true"
+            aria-describedby="fullName-error"
+            minlength="2"
+            maxlength="100"
+          >
+          <p id="fullName-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Adresse email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+            aria-required="true"
+            aria-describedby="email-error"
+          >
+          <p id="email-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="new-password"
+            required
+            aria-required="true"
+            aria-describedby="password-hint password-error"
+            minlength="8"
+            maxlength="255"
+          >
+          <p id="password-hint" class="field-hint">
+            8 caractères minimum
+          </p>
+          <p id="password-error" class="field-error" hidden></p>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Créer mon compte
+        </button>
+
+      </form>
+
+      <p class="form-alt-link">
+        Déjà un compte ?
+        <a href="/login.html">Se connecter</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script src="/assets/js/register.js"></script>
+</body>
+</html>
