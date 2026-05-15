@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Connectez-vous à Passerelle A11y pour accéder à vos projets d'audit d'accessibilité web.">
+  <title>Connexion - Passerelle A11y</title>
+  <link rel="stylesheet" href="/assets/css/public.css">
+</head>
+<body>
+
+  <!-- Skip link : invisible par défaut, visible au focus -->
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <a href="/" class="site-logo">Passerelle A11y</a>
+  </header>
+
+  <main id="main-content" class="form-page">
+    <div class="form-card">
+
+      <h1>Connexion</h1>
+
+      <!-- Message d'erreur global, caché par défaut, affiché par JS si erreur API -->
+      <!-- role="alert" : annoncé immédiatement par les lecteurs d'écran -->
+      <p
+        id="form-error"
+        class="form-error"
+        role="alert"
+        hidden
+      ></p>
+
+      <form id="login-form" novalidate>
+
+        <div class="form-group">
+          <label for="email">Adresse email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+            aria-required="true"
+            aria-describedby="email-error"
+          >
+          <p id="email-error" class="field-error" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="current-password"
+            required
+            aria-required="true"
+            aria-describedby="password-error"
+          >
+          <p id="password-error" class="field-error" hidden></p>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Se connecter
+        </button>
+
+      </form>
+
+      <p class="form-alt-link">
+        Pas encore de compte ?
+        <a href="/register.html">S'inscrire gratuitement</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script src="/assets/js/login.js"></script>
+</body>
+</html>
