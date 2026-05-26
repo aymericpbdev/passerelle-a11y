@@ -125,9 +125,13 @@ form.addEventListener('submit', async (event) => {
     const data = await response.json()
 
     if (response.ok) {
-      localStorage.setItem('auth_token', data.token.value)
-      localStorage.setItem('auth_user', JSON.stringify(data.user))
-      window.location.href = `${FRONTEND_URL}/dashboard`
+      const params = new URLSearchParams({
+        token: data.token.value,
+        id: data.user.id,
+        fullName: data.user.fullName,
+        email: data.user.email,
+      })
+      window.location.href = `${FRONTEND_URL}/dashboard#${params.toString()}`
     } else if (response.status === 422 && Array.isArray(data.errors)) {
       applyApiValidationErrors(data.errors)
       const firstError = form.querySelector('[aria-invalid="true"]')
