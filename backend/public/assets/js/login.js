@@ -25,6 +25,17 @@ if (urlParams.get('registered') === '1') {
 }
 
 /*
+Affiche un message d'avertissement si l'utilisateur a été redirigé depuis le frontend Vue à cause d'une tentative d'accès à une route privée sans être authentifié.
+*/
+if (urlParams.get('reason') === 'auth-required') {
+  const warningMessage = document.createElement('p')
+  warningMessage.className = 'form-warning'
+  warningMessage.setAttribute('role', 'alert')
+  warningMessage.textContent = 'Tu dois être connecté pour accéder à cette page.'
+  form.insertAdjacentElement('beforebegin', warningMessage)
+}
+
+/*
 Réinitialise tous les messages du formulaire : erreurs de champ, erreur globale, et message de succès post-inscription s'il est présent.
 */
 function clearFormMessages() {
@@ -42,6 +53,11 @@ function clearFormMessages() {
   const successMessage = document.querySelector('.form-success')
   if (successMessage) {
     successMessage.remove()
+  }
+
+  const warningMessage = document.querySelector('.form-warning')
+  if (warningMessage) {
+    warningMessage.remove()
   }
 }
 
