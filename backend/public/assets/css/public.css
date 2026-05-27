@@ -254,6 +254,17 @@ body {
   margin-bottom: 1rem;
 }
 
+.form-warning {
+  padding: 0.875rem 1rem;
+  margin-bottom: 1rem;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
 /* ============================================
    Bouton primaire
    ============================================ */
