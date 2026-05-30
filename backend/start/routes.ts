@@ -4,6 +4,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
 const AuthController = () => import('#controllers/auth_controller')
+const ProjectsController = () => import('#controllers/projects_controller')
 
 router.get('/api/test', ({ response }) => {
   return response.ok({ message: 'routing ok' })
@@ -26,5 +27,15 @@ router
           .use(middleware.auth({ guards: ['api'] }))
       })
       .prefix('/auth')
+
+    // Routes projets, protegees par bearer token
+    router
+      .group(() => {
+        router.post('/', [ProjectsController, 'store'])
+        router.get('/', [ProjectsController, 'index'])
+        router.get('/:id', [ProjectsController, 'show'])
+      })
+      .prefix('/projects')
+      .use(middleware.auth({ guards: ['api'] }))
   })
   .prefix('/api')
