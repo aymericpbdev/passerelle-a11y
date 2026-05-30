@@ -17,4 +17,13 @@ export default class ProjectsController {
 
     return response.created(project)
   }
+
+  /* GET /projects - liste les projets de l'utilisateur authentifie */
+  async index({ auth, response }: HttpContext) {
+    const user = auth.getUserOrFail()
+
+    const projects = await user.related('projects').query().orderBy('created_at', 'desc')
+
+    return response.ok(projects)
+  }
 }
