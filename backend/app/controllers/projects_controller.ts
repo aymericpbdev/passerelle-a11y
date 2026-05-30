@@ -26,4 +26,13 @@ export default class ProjectsController {
 
     return response.ok(projects)
   }
+
+  /* GET /projects/:id - affiche un projet de l'utilisateur authentifie */
+  async show({ params, auth, response }: HttpContext) {
+    const user = auth.getUserOrFail()
+
+    const project = await user.related('projects').query().where('id', params.id).firstOrFail()
+
+    return response.ok(project)
+  }
 }
