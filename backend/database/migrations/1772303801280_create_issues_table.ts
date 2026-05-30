@@ -21,8 +21,8 @@ export default class extends BaseSchema {
       table.text('description').notNullable()
       table.text('recommendation').nullable()
 
-      table.timestamp('created_at').notNullable()
-      table.timestamp('updated_at').nullable()
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
     })
   }
 

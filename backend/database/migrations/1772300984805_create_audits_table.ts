@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table
-        .integer('projects_id')
+        .integer('project_id')
         .unsigned()
         .notNullable()
         .references('id')
@@ -18,9 +18,9 @@ export default class extends BaseSchema {
       table.float('score').nullable()
       table.json('raw_data').nullable()
 
-      table.timestamp('tested-at').nullable()
-      table.timestamp('created_at').notNullable()
-      table.timestamp('updated_at').nullable()
+      table.timestamp('tested_at').nullable()
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
     })
   }
 
