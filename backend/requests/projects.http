@@ -1,0 +1,61 @@
+@host = http://localhost:3333
+
+###
+# 1. Login pour recuperer un token
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "aymeric@test.fr",
+  "password": "password123"
+}
+
+###
+@token = {{login.response.body.token.value}}
+
+###
+# 2. Creation d'un projet (cas nominal)
+POST {{host}}/api/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Mon premier projet",
+  "url": "https://example.com"
+}
+
+###
+# 3. Liste des projets de l'utilisateur
+GET {{host}}/api/projects
+Authorization: Bearer {{token}}
+
+###
+# 4. Detail d'un projet existant (remplace l'id par un id reel)
+GET {{host}}/api/projects/2
+Authorization: Bearer {{token}}
+
+###
+# 5. CAS D'ERREUR - creation sans token (doit renvoyer 401)
+POST {{host}}/api/projects
+Content-Type: application/json
+
+{
+  "name": "Projet sans auth",
+  "url": "https://example.com"
+}
+
+###
+# 6. CAS D'ERREUR - validation invalide (url manquante, doit renvoyer 422)
+POST {{host}}/api/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Projet sans url"
+}
+
+###
+# 7. CAS D'ERREUR - projet inexistant ou d'un autre user (doit renvoyer 404)
+GET {{host}}/api/projects/99999
+Authorization: Bearer {{token}}
