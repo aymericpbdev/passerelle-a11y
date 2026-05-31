@@ -59,3 +59,8 @@ Authorization: Bearer {{token}}
 # 7. CAS D'ERREUR - projet inexistant ou d'un autre user (doit renvoyer 404)
 GET {{host}}/api/projects/99999
 Authorization: Bearer {{token}}
+
+###
+# Lancer un audit sur un projet (remplacer l'id par un id de projet reel)
+POST {{host}}/api/projects/1/audits
+Authorization: Bearer {{token}}
