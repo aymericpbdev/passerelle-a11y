@@ -90,13 +90,14 @@
 
       <!-- Liste des projets -->
       <ul v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <li
-          v-for="project in projects"
-          :key="project.id"
-          class="bg-white rounded-lg border border-gray-200 p-5 hover:border-primary-400 transition-colors"
-        >
-          <h3 class="font-semibold text-gray-900 mb-1">{{ project.name }}</h3>
-          <p class="text-sm text-gray-600 break-words">{{ project.url }}</p>
+        <li :key="project.id" v-for="project in projects">
+          <RouterLink
+            :to="`/projects/${project.id}`"
+            class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-primary-400 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+          >
+            <h3 class="font-semibold text-gray-900 mb-1">{{ project.name }}</h3>
+            <p class="text-sm text-gray-600 break-words">{{ project.url }}</p>
+          </RouterLink>
         </li>
       </ul>
     </section>
@@ -110,6 +111,7 @@ import { api } from '@/services/api'
 import type { Project } from '@/types/models'
 import type { ApiError } from '@/services/api'
 import AppLayout from '@/components/layout/AppLayout.vue'
+import { RouterLink } from 'vue-router'
 
 const authStore = useAuthStore()
 

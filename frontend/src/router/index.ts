@@ -18,6 +18,12 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       redirect: '/dashboard',
     },
+    {
+      path: '/projects/:id',
+      name: 'project-detail',
+      component: () => import('@/views/ProjectDetailView.vue'),
+      meta: { requiresAuth: true },
+    },
   ],
 })
 
