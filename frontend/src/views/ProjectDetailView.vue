@@ -5,7 +5,7 @@
       to="/dashboard"
       class="text-sm text-primary-600 hover:text-primary-700 mb-6 inline-block"
     >
-      &larr; Retour aux projets
+      Retour aux projets
     </RouterLink>
 
     <div v-if="isLoading" class="bg-white rounded-lg border border-gray-200 p-8 text-center">
@@ -32,39 +32,72 @@
         </button>
       </section>
 
-      <!-- Message d'attente pendant l'audit -->
-      <div
-        v-if="isAuditing"
-        class="bg-white rounded-lg border border-gray-200 p-6 text-center"
-      >
+      <div v-if="isAuditing" class="bg-white rounded-lg border border-gray-200 p-6 text-center">
         <p class="text-gray-600">
           Analyse de l'accessibilité en cours, cela peut prendre quelques secondes...
         </p>
       </div>
 
-      <!-- Erreur d'audit -->
-      <div
-        v-else-if="auditError"
-        class="bg-red-50 rounded-lg border border-red-200 p-6"
-      >
+      <div v-else-if="auditError" class="bg-red-50 rounded-lg border border-red-200 p-6">
         <p class="text-red-800 font-medium mb-1">L'audit a échoué.</p>
         <p class="text-red-700">{{ auditError }}</p>
       </div>
 
-      <!-- Confirmation brute du resultat, mise en forme a la sous-tache suivante -->
-      <div
-        v-else-if="audit"
-        class="bg-white rounded-lg border border-gray-200 p-6"
-      >
-        <p class="text-gray-900 font-medium">Audit terminé. Score : {{ audit.score }} sur 100.</p>
-        <p class="text-gray-600">{{ audit.issues.length }} violation(s) détectée(s).</p>
+      <div v-else-if="audit" class="space-y-6">
+        <section class="bg-white rounded-lg border border-gray-200 p-6">
+          <h2 class="text-lg font-semibold text-gray-900 mb-2">Score d'accessibilité</h2>
+          <p class="text-4xl font-bold" :class="scoreColorClass">{{ audit.score }} / 100</p>
+          <p class="text-gray-600 mt-2">
+            {{ audit.issues.length }} violation(s) détectée(s) sur la page analysée.
+          </p>
+        </section>
+
+        <section
+          v-if="audit.issues.length === 0"
+          class="bg-success-100 rounded-lg border border-success-600 p-6"
+        >
+          <p class="text-success-600 font-medium">
+            Aucune violation détectée. La page respecte les règles testées.
+          </p>
+        </section>
+
+        <section
+          v-for="group in groupedIssues"
+          :key="group.severity"
+          class="bg-white rounded-lg border border-gray-200 p-6"
+        >
+          <h3 class="text-base font-semibold mb-4" :class="group.titleClass">
+            {{ group.label }} ({{ group.issues.length }})
+          </h3>
+
+          <ul class="space-y-4">
+            <li
+              v-for="issue in group.issues"
+              :key="issue.id"
+              class="border-l-4 pl-4"
+              :class="group.borderClass"
+            >
+              <p class="font-medium text-gray-900 mb-1">{{ issue.description }}</p>
+              <pre class="bg-gray-100 text-gray-800 text-sm rounded p-2 my-2 overflow-x-auto">{{ issue.element }}</pre>
+              <a
+                v-if="issue.recommendation"
+                :href="issue.recommendation"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-primary-600 hover:text-primary-700 underline focus:outline-none focus:ring-2 focus:ring-primary-500"
+              >
+                Comment corriger ce problème
+              </a>
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
   </AppLayout>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { RouterLink } from 'vue-router'
 import { api } from '@/services/api'
@@ -116,6 +149,38 @@ async function runAudit() {
     isAuditing.value = false
   }
 }
+
+/* Couleur du score selon trois seuils. Utilise les couleurs de statut definies dans le theme, dont le contraste est verifie. Seuils par defaut, affinables. */
+const scoreColorClass = computed(() => {
+  const score = audit.value?.score ?? 0
+  if (score >= 80) {
+    return 'text-success-600'
+  }
+  if (score >= 50) {
+    return 'text-warning-600'
+  }
+  return 'text-danger-600'
+})
+
+/* Ordre des gravites de la plus grave a la moins grave, avec leur libelle francais et les classes de couleur associees. critical et serious utilisent les couleurs de statut, moderate et minor restent neutres. */
+const severityConfig = [
+  { severity: 'critical', label: 'Critiques', titleClass: 'text-danger-600', borderClass: 'border-danger-600' },
+  { severity: 'serious', label: 'Sérieuses', titleClass: 'text-warning-600', borderClass: 'border-warning-600' },
+  { severity: 'moderate', label: 'Modérées', titleClass: 'text-gray-700', borderClass: 'border-gray-400' },
+  { severity: 'minor', label: 'Mineures', titleClass: 'text-gray-700', borderClass: 'border-gray-400' },
+]
+
+/* Regroupe les issues de l'audit par gravite, dans l'ordre defini. Ne garde que les groupes qui contiennent au moins une issue. */
+const groupedIssues = computed(() => {
+  const issues = audit.value?.issues ?? []
+
+  return severityConfig
+    .map((config) => ({
+      ...config,
+      issues: issues.filter((issue) => issue.severity === config.severity),
+    }))
+    .filter((group) => group.issues.length > 0)
+})
 
 /* Au montage, on charge le projet. */
 onMounted(() => {
