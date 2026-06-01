@@ -17,7 +17,25 @@
         </button>
       </div>
 
-      <div class="bg-white rounded-lg border border-gray-200 p-8 text-center">
+      <!-- Etat de chargement -->
+      <div v-if="isLoading" class="bg-white rounded-lg border border-gray-200 p-8 text-center">
+        <p class="text-gray-600">Chargement de tes projets...</p>
+      </div>
+
+      <!-- Etat d'erreur -->
+      <div
+        v-else-if="errorMessage"
+        class="bg-red-50 rounded-lg border border-red-200 p-8 text-center"
+      >
+        <p class="text-red-800 font-medium mb-2">Une erreur est survenue.</p>
+        <p class="text-red-700">{{ errorMessage }}</p>
+      </div>
+
+      <!-- Etat vide -->
+      <div
+        v-else-if="projects.length === 0"
+        class="bg-white rounded-lg border border-gray-200 p-8 text-center"
+      >
         <p class="text-gray-700 mb-2 font-medium">Tu n'as pas encore créé de projet.</p>
         <p class="text-gray-600 mb-6 max-w-md mx-auto">
           Un projet te permet de regrouper plusieurs audits dans le temps pour un même site web, et
@@ -30,13 +48,54 @@
           Créer mon premier projet
         </button>
       </div>
+
+      <!-- Liste des projets -->
+      <ul v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <li
+          v-for="project in projects"
+          :key="project.id"
+          class="bg-white rounded-lg border border-gray-200 p-5 hover:border-primary-400 transition-colors"
+        >
+          <h3 class="font-semibold text-gray-900 mb-1">{{ project.name }}</h3>
+          <p class="text-sm text-gray-600 break-words">{{ project.url }}</p>
+        </li>
+      </ul>
     </section>
   </AppLayout>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import { api } from '@/services/api'
+import type { Project } from '@/types/models'
+import type { ApiError } from '@/services/api'
 import AppLayout from '@/components/layout/AppLayout.vue'
 
 const authStore = useAuthStore()
+
+/* Etat reactif de la liste des projets et du cycle de chargement. */
+const projects = ref<Project[]>([])
+const isLoading = ref(true)
+const errorMessage = ref<string | null>(null)
+
+/* Charge les projets de l'utilisateur depuis l'API. Gere les trois etats : chargement, succes, erreur. */
+async function loadProjects() {
+  isLoading.value = true
+  errorMessage.value = null
+
+  try {
+    projects.value = await api.get<Project[]>('/api/projects')
+  } catch (error) {
+    const apiError = error as ApiError
+    errorMessage.value = apiError.errors[0]?.message ?? 'Impossible de charger les projets.'
+  } finally {
+    isLoading.value = false
+  }
+}
+
+/* Au montage de la page, on declenche le chargement des projets. */
+onMounted(() => {
+  loadProjects()
+})
 </script>
