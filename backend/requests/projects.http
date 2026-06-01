@@ -1,6 +1,17 @@
 @host = http://localhost:3333
 
 ###
+# Creer le compte de test (a lancer une seule fois sur une base vierge)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Aymeric Tests",
+  "email": "aymeric@test.fr",
+  "password": "password123"
+}
+
+###
 # 1. Login pour recuperer un token
 # @name login
 POST {{host}}/api/auth/login
