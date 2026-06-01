@@ -58,10 +58,13 @@
     "@adonisjs/cors": "^3.0.0",
     "@adonisjs/lucid": "^22.1.1",
     "@adonisjs/static": "^2.0.1",
+    "@axe-core/puppeteer": "^4.11.3",
     "@vinejs/vine": "^4.3.0",
+    "axe-core": "^4.11.4",
     "better-sqlite3": "^12.6.2",
     "luxon": "^3.7.2",
     "pg": "^8.18.0",
+    "puppeteer": "^25.1.0",
     "reflect-metadata": "^0.2.2"
   },
   "hotHook": {

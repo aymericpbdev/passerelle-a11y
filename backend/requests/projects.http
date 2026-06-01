@@ -1,6 +1,17 @@
 @host = http://localhost:3333
 
 ###
+# Creer le compte de test (a lancer une seule fois sur une base vierge)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Aymeric Tests",
+  "email": "aymeric@test.fr",
+  "password": "password123"
+}
+
+###
 # 1. Login pour recuperer un token
 # @name login
 POST {{host}}/api/auth/login
@@ -58,4 +69,9 @@ Authorization: Bearer {{token}}
 ###
 # 7. CAS D'ERREUR - projet inexistant ou d'un autre user (doit renvoyer 404)
 GET {{host}}/api/projects/99999
+Authorization: Bearer {{token}}
+
+###
+# Lancer un audit sur un projet (remplacer l'id par un id de projet reel)
+POST {{host}}/api/projects/1/audits
 Authorization: Bearer {{token}}

@@ -1,0 +1,43 @@
+@host = http://localhost:3333
+
+###
+# Creer le compte de test (a lancer une seule fois sur une base vierge)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Aymeric Tests",
+  "email": "aymeric@test.fr",
+  "password": "password123"
+}
+
+###
+# Login pour récupérer un token
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "aymeric@test.fr",
+    "password": "password123"
+}
+
+###
+@token = {{login.response.body.token.value}}
+
+###
+# Creer un projet a auditer
+# @name createProject
+POST {{host}}/api/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Projet de test audit",
+  "url": "https://example.com"
+}
+
+###
+# Lancer un audit sur le projet qu'on vient de creer
+POST {{host}}/api/projects/2/audits
+Authorization: Bearer {{token}}

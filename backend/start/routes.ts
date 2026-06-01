@@ -5,6 +5,7 @@ import { middleware } from '#start/kernel'
 
 const AuthController = () => import('#controllers/auth_controller')
 const ProjectsController = () => import('#controllers/projects_controller')
+const AuditsController = () => import('#controllers/audits_controller')
 
 router.get('/api/test', ({ response }) => {
   return response.ok({ message: 'routing ok' })
@@ -34,6 +35,7 @@ router
         router.post('/', [ProjectsController, 'store'])
         router.get('/', [ProjectsController, 'index'])
         router.get('/:id', [ProjectsController, 'show'])
+        router.post('/:id/audits', [AuditsController, 'store'])
       })
       .prefix('/projects')
       .use(middleware.auth({ guards: ['api'] }))

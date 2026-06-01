@@ -15,7 +15,7 @@ export default class Audit extends BaseModel {
   declare score: number | null
 
   @column()
-  declare rawData: Record<string, unknown> | null
+  declare rawData: unknown
 
   @column.dateTime()
   declare testedAt: DateTime | null
