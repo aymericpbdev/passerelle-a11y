@@ -111,9 +111,10 @@ import { api } from '@/services/api'
 import type { Project } from '@/types/models'
 import type { ApiError } from '@/services/api'
 import AppLayout from '@/components/layout/AppLayout.vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
+const router = useRouter()
 
 /* Etat reactif de la liste des projets et du cycle de chargement. */
 const projects = ref<Project[]>([])
@@ -163,13 +164,13 @@ async function submitForm() {
   formError.value = null
 
   try {
-    await api.post<Project>('/api/projects', {
+    const project = await api.post<Project>('/api/projects', {
       name: formName.value,
       url: formUrl.value,
     })
     resetForm()
     isFormVisible.value = false
-    await loadProjects()
+    router.push(`/projects/${project.id}`)
   } catch (error) {
     const apiError = error as ApiError
     formError.value = apiError.errors[0]?.message ?? 'La création a échoué.'
