@@ -9,3 +9,25 @@ export type Project = {
   createdAt: string
   updatedAt: string
 }
+
+export type Issue = {
+  id: number
+  auditId: number
+  type: string
+  severity: string
+  element: string
+  description: string
+  recommendation: string | null
+  createdAt: string
+  updatedAt: string
+}
+
+export type Audit = {
+  id: number
+  projectId: number
+  score: number | null
+  testedAt: string | null
+  createdAt: string
+  updatedAt: string
+  issues: Issue[]
+}
