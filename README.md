@@ -2,11 +2,11 @@
 
 > La passerelle vers un web accessible à tous
 
-Plateforme d'audit d'accessibilité web open-source, pédagogique et collaborative.
+Plateforme d'audit d'accessibilité web open-source et pédagogique.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Vue 3](https://img.shields.io/badge/Vue-3-42b883)](https://vuejs.org/)
-[![AdonisJS](https://img.shields.io/badge/AdonisJS-6-5a45ff)](https://adonisjs.com/)
+[![AdonisJS](https://img.shields.io/badge/AdonisJS-7-5a45ff)](https://adonisjs.com/)
 [![Status](https://img.shields.io/badge/Status-En%20développement-yellow)]()
 
 ---
@@ -24,139 +24,118 @@ Plateforme d'audit d'accessibilité web open-source, pédagogique et collaborati
 
 ## Vision
 
-Passerelle A11y est née d'un constat simple : l'accessibilité web est souvent perçue comme complexe et technique, alors qu'elle devrait être à la portée de tous les créateurs de sites web.
+Passerelle A11y part d'un constat simple. L'accessibilité web est souvent perçue comme complexe et réservée aux spécialistes, alors qu'elle devrait être à la portée de tous ceux qui construisent des sites.
 
-Issue de 6 années d'expérience dans le médico-social et d'une reconversion dans le développement web, Passerelle A11y construit un pont entre les besoins réels des utilisateurs et les pratiques des développeurs.
+Le projet est né de six années d'expérience dans le secteur médico-social et d'une reconversion vers le développement web. Cette double origine nourrit son approche, faire le lien entre les besoins réels des personnes et les pratiques des développeurs.
 
-**Approche pédagogique :** Explications claires, pas de jargon technique inutile. L'outil guide l'utilisateur vers des améliorations concrètes plutôt que de le submerger de normes.
+L'outil se veut pédagogique. Plutôt que de submerger l'utilisateur de normes, il met en avant des problèmes concrets et oriente vers leur correction, en s'appuyant sur la documentation de référence. Chaque audit devient une occasion d'apprendre.
 
-## Fonctionnalités (MVP)
+## Fonctionnalités
 
-- **Authentification** — Inscription, connexion et gestion de compte sécurisées
-- **Gestion de projets** — Création, modification et suivi de plusieurs sites web (CRUD)
-- **Analyse automatisée** — Tests d'accessibilité basés sur WCAG 2.1 (niveaux A et AA) via Axe-core
+### Déjà en place (MVP)
 
-### Post-MVP 
+- Authentification, inscription et connexion sécurisées
+- Gestion de projets, création et consultation de plusieurs sites à auditer
+- Analyse automatisée d'accessibilité, fondée sur WCAG 2.1 niveaux A et AA, via le moteur Axe-core
+- Score d'accessibilité et liste détaillée des violations, regroupées par gravité, avec un lien vers la documentation de correction
 
-- Score d'accessibilité et rapport détaillé avec recommandations
-- Export PDF des rapports d'audit
-- Historique et suivi temporel des analyses
-- Comparaisons avant/après
-- Tests manuels guidés
-- Suggestions de correction automatiques
-- API publique
-- Modèle freemium
+### Prévu (post-MVP)
 
-## Stack Technique
+- Modification et suppression de projets
+- Historique et suivi des audits dans le temps, comparaisons avant et après
+- Export des rapports d'audit
+- Évolution vers un audit fondé sur le RGAA, le référentiel français, en complément de WCAG
+- Un modèle freemium, non encore en place, est envisagé pour la pérennité du projet
+
+## Stack technique
 
 ### Frontend
-- **Vue 3** : Framework JavaScript pour l'interface utilisateur
-- **TypeScript** : JavaScript avec typage pour moins d'erreurs
-- **TailwindCSS** : Styles et design responsive
+
+- Vue 3, framework JavaScript pour l'interface
+- TypeScript, pour un typage qui limite les erreurs
+- Pinia, pour la gestion de l'état de l'application
+- TailwindCSS 4, pour le style et le responsive
+- Vite, pour le développement et le build
 
 ### Backend
-- **AdonisJS 6** : Framework Node.js pour l'API
-- **SQLite** : Base de données via better-sqlite3
-- **Axe-core** : Moteur d'analyse d'accessibilité
+
+- AdonisJS 7, framework Node.js pour l'API
+- SQLite, accédé via l'ORM Lucid avec le driver better-sqlite3
+- Axe-core, exécuté dans un navigateur sans interface piloté par Puppeteer, pour le moteur d'analyse
+
+L'accès aux données passe par l'ORM Lucid, ce qui rend l'application indépendante du moteur de base sous-jacent. Une connexion PostgreSQL est d'ailleurs déjà déclarée dans la configuration, ce qui permettrait, si le besoin s'en faisait sentir, de basculer de SQLite vers PostgreSQL en changeant un simple paramètre, sans réécrire le code d'accès aux données.
 
 ### Outils
-- **Git & GitHub** : Versionning et collaboration
-- **GitHub Projects & Issues** : Suivi d'avancement à l'aide de Kanban et Tickets
+
+- Git et GitHub, versionnement et suivi
+- Police Atkinson Hyperlegible Next, conçue pour améliorer la lisibilité des personnes malvoyantes
 
 ## Roadmap
 
-### Phase 1 - MVP (Février - Mai 2025)
+### Phase 1, MVP (février à mai 2026)
 
 - [x] Définition de l'architecture
 - [x] Choix de la stack technique
-- [ ] Setup projet et base de données
-- [ ] Authentification utilisateurs
-- [ ] Système de projets (CRUD)
-- [ ] Intégration Axe-core
-- [ ] Déploiement MVP
+- [x] Mise en place du projet et de la base de données
+- [x] Authentification des utilisateurs
+- [x] Gestion de projets, création et consultation
+- [x] Intégration d'Axe-core et moteur d'audit
+- [x] Documentation du déploiement, en local pour le moment
 
-> Le suivi détaillé des tickets est disponible sur [GitHub Projects](https://github.com/aymericpbdev/passerelle-a11y/projects)
+### Phase 2, post-MVP
 
-### Phase 2 - Post-MVP (Après diplôme)
-
-- [ ] Score d'accessibilité et rapports détaillés
-- [ ] Export PDF
-- [ ] Historique et comparaisons temporelles
-- [ ] Tests manuels guidés
-- [ ] Suggestions de correction automatiques
-- [ ] API publique
-- [ ] Modèle freemium
+- [ ] Modification et suppression de projets
+- [ ] Historique et comparaisons dans le temps
+- [ ] Export des rapports
+- [ ] Audit fondé sur le RGAA en complément de WCAG
+- [ ] Réflexion sur un modèle freemium et une éventuelle bascule vers PostgreSQL
 
 ## Contexte
 
-Ce projet est développé dans le cadre d'un **Titre Professionnel Développeur Web et Web Mobile** (Niveau 5 - Bac+2).
+Ce projet est développé dans le cadre du Titre Professionnel Développeur Web et Web Mobile, de niveau 5.
 
-**Objectifs pédagogiques :**
-- Concevoir et développer une application web full-stack
-- Implémenter une architecture scalable et maintenable
-- Appliquer les bonnes pratiques de développement (clean code, sécurité, accessibilité)
-- Gérer un projet de A à Z (conception, développement, déploiement)
+Il est né dans une démarche d'apprentissage, comme projet de formation, mais il a été pensé pour pouvoir évoluer au-delà de cet exercice. Les choix techniques, l'architecture et la documentation ont été menés dans cet esprit.
 
-**Présentation du diplôme :** Juin 2026
+Présentation du diplôme, juin 2026.
 
 ## Licence
 
-Ce projet est sous double licence :
+Le projet est sous double licence.
 
-### Licence Open-Source (AGPL-3.0)
+### Licence open-source, AGPL-3.0
 
-Le code source est disponible sous [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.html).
+Le code source est disponible sous GNU Affero General Public License v3.0.
 
-**Vous pouvez :**
-- ✅ Utiliser le logiciel gratuitement
-- ✅ Voir et modifier le code source
-- ✅ Distribuer vos modifications
+Vous pouvez utiliser, étudier, modifier et distribuer le logiciel, à condition de publier vos modifications sous la même licence, de fournir le code source même en cas d'hébergement du service en ligne, et de créditer l'auteur d'origine.
 
-**À condition de :**
-- ⚠️ Publier vos modifications sous la même licence (AGPL-3.0)
-- ⚠️ Fournir le code source même si vous hébergez le service en ligne
-- ⚠️ Créditer l'auteur original
+### Licence commerciale
 
-### Licence Commerciale
-
-Pour toute utilisation commerciale ne respectant pas les termes de l'AGPL-3.0, contactez-moi pour discuter d'une licence commerciale.
-
-**Contact :** aymericpb.dev@gmail.com
+Une licence commerciale pourra être proposée pour les usages ne relevant pas des termes de l'AGPL-3.0. Cette option n'est pas encore en place, elle accompagne la réflexion sur la pérennité du projet. Pour toute question, le contact est indiqué plus bas.
 
 ## Contribuer
 
-Les contributions sont les bienvenues ! Ce projet étant en phase de développement actif, n'hésitez pas à :
+Les contributions sont les bienvenues. Le projet étant en développement, vous pouvez signaler un bug ou proposer une amélioration via les issues, ou soumettre une pull request. Les conventions sont décrites dans le fichier CONTRIBUTING.
 
-- 🐛 Signaler des bugs via les [Issues](https://github.com/aymericpbdev/passerelle-a11y/issues)
-- 💡 Proposer des améliorations
-- 🔧 Soumettre des Pull Requests
-
-Toute contribution sera sous licence AGPL-3.0.
+Toute contribution est placée sous licence AGPL-3.0.
 
 ## Auteur
 
-**Aymeric PAIN BLAVEC**
+Aymeric Pain Blavec
 
-- 6 ans d'expérience dans le secteur médico-social
-- En reconversion développement web
-- Passionné par l'accessibilité numérique et l'inclusion
+Issu de six années dans le secteur médico-social, en reconversion vers le développement web, attaché à l'accessibilité numérique et à l'inclusion.
 
-**Contact :**
-- Email : aymericpb.dev@gmail.com
-- LinkedIn : [aymeric-painblavec](https://www.linkedin.com/in/aymeric-painblavec/)
-- GitHub : [@aymericpbdev](https://github.com/aymericpbdev)
+Contact, aymericpb.dev@gmail.com
+
+LinkedIn, aymeric-painblavec
+
+GitHub, aymericpbdev
 
 ## Remerciements
 
-- [Axe-core](https://github.com/dequelabs/axe-core) par Deque Systems
-- La communauté open-source pour ses futures contributions
-- Mes formateurs et pairs en reconversion
+- Axe-core, par Deque Systems
+- La communauté open-source
+- Mes formateurs et mes pairs en reconversion
 
 ---
 
-
-**Construit pour un web accessible à tous**
-
-
-
-
+Construit pour un web accessible à tous

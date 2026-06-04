@@ -1,172 +1,154 @@
-# 🤝 Contribuer à Passerelle A11y
+# Contribuer à Passerelle A11y
 
-Merci de votre intérêt pour contribuer ! Ce projet est en cours de développement dans le cadre d'une formation, toute aide est la bienvenue. 🌉
-
----
-
-## 🚀 Comment contribuer ?
-
-### 1. Proposer des idées ou signaler des bugs
-
-Ouvrez une [Issue](https://github.com/aymericpbdev/passerelle-a11y/issues) pour :
-- 🐛 Signaler un bug
-- 💡 Proposer une amélioration
-- 🤔 Poser une question
-
-### 2. Contribuer au code
-
-1. **Fork le projet** et clone-le localement
-2. **Créez une branche** pour votre contribution
-3. **Faites vos modifications** en suivant les conventions ci-dessous
-4. **Testez localement** que tout fonctionne
-5. **Créez une Pull Request** avec une description claire
+Merci de votre intérêt pour le projet. Passerelle A11y est développé dans le cadre d'une formation et a vocation à évoluer, toute aide est la bienvenue.
 
 ---
 
-## 📝 Convention des Commits (GitMoji)
+## Comment contribuer
 
-Pour rendre l'historique Git clair et visuel, nous utilisons des **emojis GitMoji**.
+### Proposer une idée ou signaler un bug
 
-### Format recommandé
-```
-<emoji> <type>: <description courte>
-```
+Ouvrez une issue pour signaler un bug, proposer une amélioration ou poser une question.
 
-### Emojis principaux
+### Contribuer au code
 
-| Emoji | Usage | Exemple |
-|-------|-------|---------|
-| ✨ | Nouvelle fonctionnalité | `✨ feat: add PDF export` |
-| 🐛 | Correction de bug | `🐛 fix: resolve score calculation error` |
-| 📝 | Documentation | `📝 docs: update README` |
-| 💄 | Interface/Style | `💄 style: improve dashboard layout` |
-| ♻️ | Refactoring | `♻️ refactor: simplify analysis service` |
-| ✅ | Tests | `✅ test: add unit tests for scoring` |
-| 🔧 | Configuration | `🔧 chore: update dependencies` |
-| ♿️ | Accessibilité | `♿️ a11y: improve keyboard navigation` |
-| 🚧 | Travail en cours | `🚧 wip: analysis page structure` |
-
-**Liste complète :** [gitmoji.dev](https://gitmoji.dev/)
-
-### Exemples concrets
-
-**Bons commits :**
-```bash
-✨ feat: add user authentication
-🐛 fix: correct contrast calculation
-📝 docs: add API documentation
-♿️ a11y: improve focus indicators
-```
-
-**À éviter :**
-```bash
-❌ update stuff
-❌ fix
-❌ changes
-```
-
-### Conseils
-
-- **Soyez descriptif** : Le commit doit expliquer ce qui a été fait
-- **Une action logique par commit** : Pas de commit fourre-tout
-- **Référencez les issues** si pertinent : `Closes #12` ou `Fixes #24`
+1. Forkez le projet et clonez-le localement
+2. Créez une branche dédiée à votre contribution
+3. Faites vos modifications en suivant les conventions ci-dessous
+4. Testez localement que tout fonctionne
+5. Ouvrez une pull request avec une description claire
 
 ---
 
-## 🔍 Pull Requests
+## Conventions de commit
 
-### Titre de la PR
+L'historique du projet suit une logique simple, un commit correspond à une action cohérente, et son message décrit ce qui a été fait. Préférez un message clair et descriptif à un message vague.
 
-Même format que les commits :
+Quelques exemples de messages clairs.
+
 ```
-✨ feat: add project dashboard
-🐛 fix: resolve authentication bug
+feat: ajout de l'authentification utilisateur
+fix: correction du calcul de score
+docs: mise à jour du README
+a11y: amélioration de la navigation au clavier
+```
+
+À éviter, les messages qui ne disent rien.
+
+```
+update
+fix
+changes
+```
+
+Référencez les issues concernées quand c'est pertinent, par exemple avec Closes #12.
+
+### À propos de Gitmoji
+
+La convention Gitmoji, qui préfixe les messages de commit d'un emoji, est une possibilité que vous pouvez adopter si vous l'appréciez. Elle rend l'historique visuel et certains contributeurs y trouvent du confort. Elle n'est pas imposée sur ce projet. Le plus important reste la clarté du message lui-même.
+
+---
+
+## Pull requests
+
+### Titre
+
+Le titre suit la même logique que les messages de commit, un type suivi d'une description courte.
+
+```
+feat: ajout du tableau de bord des projets
+fix: correction d'un bug d'authentification
 ```
 
 ### Description
 
-Expliquez simplement :
-- **Quoi** : Qu'avez-vous changé ?
-- **Pourquoi** : Quelle problématique ça résout ?
-- **Comment tester** : Si pertinent
+Une bonne description répond à trois questions. Quoi, ce que vous avez changé. Pourquoi, le problème que cela résout. Comment tester, si c'est pertinent.
 
-**Exemple :**
+Exemple.
+
 ```markdown
 ## Description
-Ajout de l'export PDF des rapports d'analyse.
+Ajout de l'export des rapports d'audit.
 
 ## Changements
-- Intégration de PDFKit
-- Nouveau bouton "Télécharger PDF" sur la page de résultats
-- Template de rapport avec logo et scores
+- Nouveau bouton de téléchargement sur la page de résultats
+- Génération du rapport avec le score et la liste des violations
 
 ## Tests
-1. Lancer une analyse
-2. Cliquer sur "Télécharger PDF"
-3. Vérifier que le PDF contient le score et les erreurs
+1. Lancer un audit
+2. Cliquer sur le bouton de téléchargement
+3. Vérifier que le rapport contient le score et les violations
 
 Closes #15
 ```
 
 ---
 
-## 🎨 Quelques conventions de code
+## Conventions de code
 
 ### Général
-- **Nommer clairement** : Préférez `calculateAccessibilityScore` à `calc` ou `score`
-- **Typage TypeScript** : Typez vos fonctions et composants
-- **Commentez si complexe** : Expliquez le "pourquoi", pas le "quoi"
 
-### Accessibilité (crucial pour ce projet !)
-- Utilisez des **balises sémantiques** (`<button>`, `<nav>`, `<main>`)
-- Ajoutez `alt` aux images
-- Assurez-vous que tout est **navigable au clavier** (testez avec Tab)
-- Vérifiez les **contrastes de couleurs** (minimum WCAG AA)
+- Nommez clairement, préférez calculateAccessibilityScore à calc ou score
+- Typez vos fonctions et vos composants avec TypeScript
+- Commentez ce qui est complexe, en expliquant le pourquoi plutôt que le quoi
 
-### Exemples
+### Accessibilité, essentielle sur ce projet
 
-**✅ Bon :**
-```typescript
-interface UserProps {
-  name: string;
-  email: string;
+- Utilisez des balises sémantiques, button, nav, main, plutôt que des conteneurs neutres
+- Donnez un texte alternatif aux images porteuses de sens
+- Assurez-vous que tout est utilisable au clavier, testez avec la touche Tab
+- Vérifiez les contrastes de couleurs, au minimum le niveau WCAG AA
+
+### Exemple, un composant Vue
+
+Un composant lisible, typé, et construit avec des balises sémantiques.
+
+```vue
+<script setup lang="ts">
+interface Props {
+  name: string
+  email: string
 }
 
-export function UserCard({ name, email }: UserProps) {
-  return (
-    <article>
-      <h2>{name}</h2>
-      <p>{email}</p>
-    </article>
-  );
-}
+defineProps<Props>()
+</script>
+
+<template>
+  <article>
+    <h2>{{ name }}</h2>
+    <p>{{ email }}</p>
+  </article>
+</template>
 ```
 
-**❌ À éviter :**
-```typescript
-export default (props) => {
-  return <div>{props.n}</div>; // Nommage peu clair, pas de typage
-}
+À l'inverse, à éviter, un composant non typé et peu lisible, qui s'appuie sur des conteneurs neutres sans structure.
+
+```vue
+<script setup>
+const props = defineProps(['n'])
+</script>
+
+<template>
+  <div>{{ props.n }}</div>
+</template>
 ```
 
 ---
 
-## ♿️ Tester l'accessibilité
+## Tester l'accessibilité
 
-Avant de soumettre une PR avec des changements UI :
+Avant de soumettre une pull request qui touche à l'interface, quelques vérifications.
 
-1. **Navigation clavier** : Testez avec Tab, Enter, Escape
-2. **Lecteur d'écran** : Si possible, testez avec NVDA (Windows) ou VoiceOver (Mac)
-3. **Contrastes** : Vérifiez avec [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
-
----
-
-## 💬 Questions ou problèmes ?
-
-N'hésitez pas à :
-- Ouvrir une [Issue](https://github.com/aymericpbdev/passerelle-a11y/issues)
-- Me contacter : aymericpb.dev@gmail.com
+1. Navigation au clavier, testez avec Tab, Entrée et Échap
+2. Lecteur d'écran, si possible, testez avec NVDA sur Windows ou VoiceOver sur Mac
+3. Contrastes, vérifiez avec un outil comme le WebAIM Contrast Checker
 
 ---
 
-**Merci de contribuer à un web plus accessible ! 🌉**
+## Questions
+
+Pour toute question, vous pouvez ouvrir une issue ou écrire à aymericpb.dev@gmail.com.
+
+---
+
+Merci de contribuer à un web plus accessible.
