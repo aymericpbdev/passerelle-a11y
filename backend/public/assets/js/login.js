@@ -156,6 +156,7 @@ form.addEventListener('submit', async (event) => {
       formError.textContent = 'Email ou mot de passe incorrect.'
       formError.hidden = false
     }
+
   } catch {
     formError.textContent = 'Impossible de contacter le serveur. Vérifie ta connexion et réessaie.'
     formError.hidden = false
