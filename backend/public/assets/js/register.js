@@ -51,7 +51,7 @@ Format attendu : { errors: [{ field, message, rule, meta }] }
 */
 function applyApiValidationErrors(errors) {
   const fieldMap = Object.fromEntries(
-    fields.map(f => [f.name, { input: f.input, errorEl: f.errorEl }])
+    fields.map((f) => [f.name, { input: f.input, errorEl: f.errorEl }])
   )
 
   for (const err of errors) {
@@ -69,7 +69,11 @@ function validateForm() {
   let isValid = true
 
   if (!fullNameInput.value.trim() || fullNameInput.value.trim().length < 2) {
-    showFieldError(fullNameInput, fullNameError, 'Le nom complet doit contenir au moins 2 caractères.')
+    showFieldError(
+      fullNameInput,
+      fullNameError,
+      'Le nom complet doit contenir au moins 2 caractères.'
+    )
     isValid = false
   }
 
@@ -85,7 +89,11 @@ function validateForm() {
     showFieldError(passwordInput, passwordError, 'Le mot de passe est requis.')
     isValid = false
   } else if (passwordInput.value.length < 8) {
-    showFieldError(passwordInput, passwordError, 'Le mot de passe doit contenir au moins 8 caractères.')
+    showFieldError(
+      passwordInput,
+      passwordError,
+      'Le mot de passe doit contenir au moins 8 caractères.'
+    )
     isValid = false
   }
 
@@ -134,7 +142,6 @@ form.addEventListener('submit', async (event) => {
       formError.textContent = 'Une erreur est survenue lors de la création du compte.'
       formError.hidden = false
     }
-
   } catch {
     formError.textContent = 'Impossible de contacter le serveur. Vérifie ta connexion et réessaie.'
     formError.hidden = false
