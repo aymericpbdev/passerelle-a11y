@@ -12,7 +12,10 @@
       <p class="text-gray-600">Chargement du projet...</p>
     </div>
 
-    <div v-else-if="errorMessage" class="bg-red-50 rounded-lg border border-red-200 p-8 text-center">
+    <div
+      v-else-if="errorMessage"
+      class="bg-red-50 rounded-lg border border-red-200 p-8 text-center"
+    >
       <p class="text-red-800 font-medium mb-2">Une erreur est survenue.</p>
       <p class="text-red-700">{{ errorMessage }}</p>
     </div>
@@ -78,7 +81,9 @@
               :class="group.borderClass"
             >
               <p class="font-medium text-gray-900 mb-1">{{ issue.description }}</p>
-              <pre class="bg-gray-100 text-gray-800 text-sm rounded p-2 my-2 overflow-x-auto">{{ issue.element }}</pre>
+              <pre class="bg-gray-100 text-gray-800 text-sm rounded p-2 my-2 overflow-x-auto">{{
+                issue.element
+              }}</pre>
               <a
                 v-if="issue.recommendation"
                 :href="issue.recommendation"
@@ -164,10 +169,30 @@ const scoreColorClass = computed(() => {
 
 /* Ordre des gravites de la plus grave a la moins grave, avec leur libelle francais et les classes de couleur associees. critical et serious utilisent les couleurs de statut, moderate et minor restent neutres. */
 const severityConfig = [
-  { severity: 'critical', label: 'Critiques', titleClass: 'text-danger-600', borderClass: 'border-danger-600' },
-  { severity: 'serious', label: 'Sérieuses', titleClass: 'text-warning-600', borderClass: 'border-warning-600' },
-  { severity: 'moderate', label: 'Modérées', titleClass: 'text-gray-700', borderClass: 'border-gray-400' },
-  { severity: 'minor', label: 'Mineures', titleClass: 'text-gray-700', borderClass: 'border-gray-400' },
+  {
+    severity: 'critical',
+    label: 'Critiques',
+    titleClass: 'text-danger-600',
+    borderClass: 'border-danger-600',
+  },
+  {
+    severity: 'serious',
+    label: 'Sérieuses',
+    titleClass: 'text-warning-600',
+    borderClass: 'border-warning-600',
+  },
+  {
+    severity: 'moderate',
+    label: 'Modérées',
+    titleClass: 'text-gray-700',
+    borderClass: 'border-gray-400',
+  },
+  {
+    severity: 'minor',
+    label: 'Mineures',
+    titleClass: 'text-gray-700',
+    borderClass: 'border-gray-400',
+  },
 ]
 
 /* Regroupe les issues de l'audit par gravite, dans l'ordre defini. Ne garde que les groupes qui contiennent au moins une issue. */
