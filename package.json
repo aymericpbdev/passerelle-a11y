@@ -1,0 +1,8 @@
+{
+  "name": "passerelle-a11y",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "engines": {
+    "node": ">=24"
+  }
+}
