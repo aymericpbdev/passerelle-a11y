@@ -30,7 +30,7 @@ test.group('AuditEngine computeScore', () => {
 
     const score = engine.computeScore([])
 
-    assert.equal(score, 99)
+    assert.equal(score, 100)
   })
 
   test('retranche les bonnes penalites selon la gravite', ({ assert }) => {
