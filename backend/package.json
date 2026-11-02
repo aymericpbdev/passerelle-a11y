@@ -65,7 +65,7 @@
     "better-sqlite3": "^12.6.2",
     "luxon": "^3.7.2",
     "pg": "^8.18.0",
-    "puppeteer": "^25.1.0",
+    "puppeteer": "^25.16.0",
     "reflect-metadata": "^0.2.2"
   },
   "hotHook": {
