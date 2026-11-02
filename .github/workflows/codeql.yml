@@ -1,6 +1,6 @@
 # Analyse du code par CodeQL, en configuration avancee.
 # La configuration par defaut ne tourne pas sur les PR de Dependabot, ce qui bloquait leur fusion avec la regle CodeQL du ruleset.
-# Voir l'issue associee.
+# Voir issue #73 et PR #74.
 name: CodeQL
 
 # QUAND le workflow se lance
