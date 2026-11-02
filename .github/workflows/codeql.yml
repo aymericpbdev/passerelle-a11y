@@ -1,0 +1,62 @@
+# Analyse du code par CodeQL, en configuration avancee.
+# La configuration par defaut ne tourne pas sur les PR de Dependabot, ce qui bloquait leur fusion avec la regle CodeQL du ruleset.
+# Voir issue #73 et PR #74.
+name: CodeQL
+
+# QUAND le workflow se lance
+on:
+  push:
+    branches: [main]
+  # pull_request est le declencheur qui permet a CodeQL d'envoyer ses resultats sur les PR de Dependabot, dont le jeton est en lecture seule.
+  pull_request:
+    branches: [main]
+  # Chaque lundi a 00:18 UTC, pour detecter les nouvelles failles connues meme quand personne ne pousse de code.
+  schedule:
+    - cron: '18 0 * * 1'
+
+# QUOI : une seule tache, nommee analyze
+jobs:
+  analyze:
+    # Nom affiche dans les verifications, par exemple "Analyze (actions)"
+    name: Analyze (${{ matrix.language }})
+
+    # OU : une machine Linux neuve, fournie par GitHub
+    runs-on: ubuntu-latest
+
+    # AVEC QUELS DROITS : seulement ceux dont l'analyse a besoin.
+    # Tout ce qui n'est pas liste ici est refuse.
+    permissions:
+      security-events: write # envoyer les resultats a GitHub
+      contents: read # lire le code du depot
+
+    # COMBIEN : la matrice lance un exemplaire du job par entree de la liste, en parallele.
+    # Chaque exemplaire recoit ses propres valeurs matrix.xxx.
+    strategy:
+      # Si un exemplaire echoue, l'autre continue jusqu'au bout.
+      fail-fast: false
+      matrix:
+        include:
+          # Les fichiers de workflow dans .github/workflows
+          - language: actions
+            build-mode: none
+          # Le code du backend et du frontend.
+          # none : CodeQL lit les sources sans compiler, ce qui suffit pour du TypeScript.
+          - language: javascript-typescript
+            build-mode: none
+
+    # COMMENT : les etapes, executees dans l'ordre par chaque exemplaire
+    steps:
+      # 1. Recuperer le code du depot sur la machine
+      - uses: actions/checkout@v7
+
+      # 2. Preparer CodeQL pour le langage de cet exemplaire
+      - uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      # 3. Analyser, puis envoyer les resultats a GitHub.
+      # category distingue les resultats des deux exemplaires.
+      - uses: github/codeql-action/analyze@v4
+        with:
+          category: '/language:${{ matrix.language }}'
